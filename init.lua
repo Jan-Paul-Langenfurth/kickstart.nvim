@@ -1036,5 +1036,7 @@ require('lazy').setup({
   },
 })
 
+-- Keymaps for showing diagnostic float
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = '[D]iagnostic float' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
