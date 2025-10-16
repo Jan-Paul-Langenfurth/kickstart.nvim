@@ -1,4 +1,4 @@
-npm install -g intelephense stylelint-lsp typescript typescript-language-server
+npm install -g intelephense stylelint-lsp typescript typescript-language-server markdownlint
 
 if [[ $OSTYPE == 'darwin'* ]]; then
 	brew install tflint
