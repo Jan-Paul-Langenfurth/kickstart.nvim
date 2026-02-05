@@ -88,7 +88,7 @@ vim.o.confirm = true
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
-
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
