@@ -827,8 +827,10 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter.install').install({
+    main = 'nvim-treesitter.config', -- Sets main module to use for opts
+    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    opts = {
+      ensure_installed = {
         'go',
         'php',
         'typescript',
@@ -847,8 +849,14 @@ require('lazy').setup({
         'query',
         'vim',
         'vimdoc',
-      })
-    end,
+      },
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = { enable = true, disable = { 'ruby' } },
+    },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -901,5 +909,12 @@ require('lazy').setup({
 
 -- Keymaps for showing diagnostic float
 vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = '[D]iagnostic float' })
+
+-- Toggle markview splitview for markdown buffers
+vim.keymap.set('n', '<leader>v', function()
+  if vim.bo.filetype == 'markdown' then
+    vim.cmd('Markview splitToggle')
+  end
+end, { desc = '[V]ertical split markdown preview' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
