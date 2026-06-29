@@ -601,6 +601,7 @@ require('lazy').setup({
         tflint = {},
         stylelint_lsp = {},
         markdownlint = {},
+        zls = {},
 
         lua_ls = {
           settings = {
